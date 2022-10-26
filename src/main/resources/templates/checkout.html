@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Ecommerce Shopping Site</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">View Item</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/students}">Back to Dashboard</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+
+	<div class ="container">
+		<div class = "row">
+			<h1> View Item </h1>
+		</div>
+		
+		
+		</div>
+		<table class = "table table-striped table-bordered">
+			<thead class = "table-dark">
+				<tr>
+					
+					<th> SKU Id</th>
+					<th> Title </th>
+					
+					<th> Price </th>
+					<th> Quantity </th>
+					<th> subTotal </th>
+					
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each = "use: ${users}">
+					
+					<td th:text = "${use.skuid}"></td>
+					<td th:text = "${use.title}"></td>
+				
+					<td th:text = "${use.price}"></td>
+					<td th:text = "${use.quantity}"></td>
+				<td th:text = "${use.price}" * "${use.quantity}"></td>
+					
+				</tr>
+			</tbody>
+			
+		
+		</table>
+		
+		<div>
+		<form th:action="@{/checkout}" th:object = "${checkout}" method="POST">
+						<div class ="form-group">
+							<label> First Name </label>
+							<input
+							type = "text"
+							name = "firstName"
+							th:field = "*{firstName}"
+							class = "form-control"
+							placeholder="Enter First Name" 
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> Last Name </label>
+							<input
+							type = "text"
+							name = "lastName"
+							th:field = "*{lastName}"
+							class = "form-control"
+							placeholder="Enter last name" 
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> Phone </label>
+							<input
+							type = "text"
+							name = "phone"
+							th:field = "*{phone}"
+							class = "form-control"
+							placeholder="Enter Phone" 
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> Email </label>
+							<input
+							type = "text"
+							name = "email"
+							th:field = "*{email}"
+							class = "form-control"
+							placeholder="Enter Email" 
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> Card Number </label>
+							<input
+							type = "text"
+							name = "cardNumber"
+							th:field = "*{cardNumber}"
+							class = "form-control"
+							placeholder="Enter Card Number" 
+							/>
+						</div> 
+						
+						<div class ="form-group">
+							<label> Expiry Date </label>
+							<input
+							type = "text"
+							name = "expiryDate"
+							th:field = "*{expiryDate}"
+							class = "form-control"
+							placeholder="Enter expiryDate" 
+							/>
+						</div> 
+						
+						<div class ="form-group">
+							<label> CVV </label>
+							<input
+							type = "text"
+							name = "cvv"
+							th:field = "*{cvv}"
+							class = "form-control"
+							placeholder="Enter CVV" 
+							/>
+						</div> 
+						
+						<div class = "box-footer">
+							<button type="submit" class = "btn btn-primary">
+								Add Item
+							</button>
+						</div>
+					</form>
+					
+		</div>
+		
+</body>
+</html>
